@@ -26,13 +26,29 @@ vim.opt.rtp:prepend(lazypath)
 
 -- plugins the lazy plugin manager will install
 plugins = {
+    { "dracula/vim", priority = 1000 },
+    { "NLKNguyen/papercolor-theme", priority = 1000 },
+    { "joshdick/onedark.vim", priority = 1000 },
+    { "folke/tokyonight.nvim", lazy = false, priority = 1000, opts = {} },
     { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+    { 'rose-pine/neovim', name = 'rose-pine' },
+    { "ellisonleao/gruvbox.nvim", priority = 1000 , config = true },
     {
         'nvim-telescope/telescope.nvim', tag = '0.1.5',
         dependencies = { 'nvim-lua/plenary.nvim' }
     },
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-    { "xiyaowong/transparent.nvim" }
+    -- { "xiyaowong/transparent.nvim" },
+    {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons",
+            "MunifTanjim/nui.nvim",
+        },
+    },
+    {'akinsho/toggleterm.nvim', version = "*", config = true},
 }
 opts = {}
 
@@ -40,10 +56,12 @@ require("lazy").setup(plugins, opts)
 
 -- seting keymaps
 local builtin = require("telescope.builtin")
-vim.keymap.set('n', '<leader>fe', builtin.find_files, {})
+vim.keymap.set('n', '<leader>e', builtin.find_files, {})
 vim.keymap.set('n', '<A-e>', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fd', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>s', builtin.live_grep, {})
 vim.keymap.set('n', '<A-s>', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>l', ":Neotree toggle<CR>")
+vim.keymap.set('n', '<leader>f', ":Neotree filesystem reveal left<CR>")
 
 local config = require("nvim-treesitter.configs")
 config.setup({
@@ -52,7 +70,15 @@ config.setup({
     indent = { enable = true }
 })
 
-require("catppuccin").setup()
-vim.cmd.colorscheme "catppuccin"
+-- require("catppuccin").setup()
 
-vim.cmd("TransparentEnable")
+-- vim.cmd("TransparentEnable")
+require("tokyonight").setup {
+    transparent = true,
+    styles = {
+       sidebars = "transparent",
+       floats = "transparent",
+    }
+}
+
+vim.cmd.colorscheme "tokyonight"
