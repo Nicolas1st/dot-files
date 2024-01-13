@@ -2,8 +2,8 @@
 vim.keymap.set('n', '<leader>i', ":Neotree toggle<CR>")
 
 -- fast vertical navigation
-vim.keymap.set('n', '<A-j>', '<C-d>zz')
-vim.keymap.set('n', '<A-k>', '<C-u>zz')
+vim.keymap.set('n', '<A-d>', '<C-d>zz')
+vim.keymap.set('n', '<A-u>', '<C-u>zz')
 
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
