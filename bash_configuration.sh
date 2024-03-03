@@ -42,3 +42,24 @@ do
     eval "${project##*/}=$project"
 done
 
+
+export LESS_TERMCAP_se=$'\e[0m'     
+export LESS_TERMCAP_me=$'\e[0m'     
+export LESS_TERMCAP_us=$'\e[4;93m'  
+export LESS_TERMCAP_ue=$'\e[0m'     
+export LESS_TERMCAP_so=$'\e[45;93m' 
+export LESS_TERMCAP_md=$'\e[01;37m' 
+export LESS_TERMCAP_mb=$'\e[01;31m' 
+
+man() {
+    LESS_TERMCAP_ue=$'\e[0m' \
+    LESS_TERMCAP_md=$'\e[01;31m' \
+    LESS_TERMCAP_us=$'\e[4;93m' \
+    LESS_TERMCAP_mb=$'\e[01;31m'
+    LESS_TERMCAP_so=$'\e[45;93m' \
+    LESS_TERMCAP_se=$'\e[0m' \
+    LESS_TERMCAP_me=$'\e[0m' \
+
+    command man "$@"
+}
+
