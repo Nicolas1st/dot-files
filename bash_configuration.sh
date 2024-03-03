@@ -36,3 +36,9 @@ commit() {
     git commit -m "$@"
 }
 alias c="clear"
+
+for project in $HOME/Projects/*
+do
+    eval "${project##*/}=$project"
+done
+
