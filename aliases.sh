@@ -8,6 +8,7 @@ alias gds="git diff --staged"
 alias gd="git diff"
 alias gb="git branch";
 alias gc="git branch";
+alias gm="git mv";
 commit() {
     git commit -m "$@"
 }
