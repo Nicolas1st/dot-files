@@ -13,6 +13,12 @@ return {
             filesystem = {
                 hijack_netrw_behavior = "open_current",
             },
+            window = {
+                mappings = {
+                    -- disble fuzzy finder
+                    ["/"] = "noop"
+                }
+            }
         })
     end
 }

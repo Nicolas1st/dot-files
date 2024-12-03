@@ -1,4 +1,5 @@
 vim.g.mapleader = " "
+vim.opt.swapfile = false
 
 -- install the "lazy" plugin manager if it's not installed yet
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
